@@ -4,9 +4,9 @@
 #include <stdlib.h>
 #include <iostream>
 #include "utils.h"
-//#ifdef _OPENMP
+#ifdef _OPENMP
     #include <omp.h>
-//#endif
+#endif
 
 
 
@@ -76,9 +76,9 @@ int main(int argc, char** argv)
         // //!Loop over iterations
         // bool converged = false;
         // double finalError = 0.0;
-//#ifdef _OPENMP
+#ifdef _OPENMP
         double t = omp_get_wtime();
-//#endif        
+#endif        
         for(long iter = 0; iter < maxIterations; ++iter)
         {
             //!Go to each row and then each column
@@ -106,12 +106,12 @@ int main(int argc, char** argv)
             //}
             CopyFromNewToCurr(nrT,Ne, u_curr, u_new);
         }
-//#ifdef _OPENMP
+#ifdef _OPENMP
         t = omp_get_wtime() - t;
         if(nrT == 1)
             seqTime = t;
         printf("Jacobi Method, N = %d, Num threads = %d, time elapsed = %f, speedup = %f\n", N,nrT, t, seqTime/t);
-//#endif        
+#endif        
 
     }
     //if(converged == false)
