@@ -210,10 +210,10 @@ int main(int argc, char** argv)
             }
         }
         lastIterError = maxError;
-        if(iter == 1999)
-        {
+        //if(iter == 1999 || iter%10 == 0)
+        //{
             std::cout << "Iteration: " << iter << " |Seq relative error: " << compareError << "  |Residual Error: " << lastIterError << std::endl;
-        }
+       // }
     }
     //printf("Exited cuda kernel\n");
     //printf("Maximum Iterations used are: %d\n",iter);
